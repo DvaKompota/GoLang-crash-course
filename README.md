@@ -1,0 +1,1 @@
+A repo to track the progress of learning Go with the [Go: The Complete Developer's Guide](https://www.udemy.com/course/go-the-complete-developers-guide/) by [Stephen Grider](https://www.udemy.com/user/sgslo/).
