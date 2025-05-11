@@ -28,3 +28,32 @@ func TestSaveToFileAndNewDeckFromFile(t *testing.T) {
 	}
 	os.Remove("_decktesting")
 }
+
+func TestDeal(t *testing.T) {
+	deck := newDeck()
+	hand := deck.deal(5)
+	if len(hand) != 5 {
+		t.Errorf("Expected hand size of 5, but got %v", len(hand))
+	}
+	if len(deck) != 47 {
+		t.Errorf("Expected deck size of 47, but got %v", len(deck))
+	}
+}
+
+func TestShuffle(t *testing.T) {
+	cards := newDeck()
+	// Create a copy of the original deck to compare after shuffling
+	originalDeck := make(deck, len(cards))
+	copy(originalDeck, cards)
+	cards.shuffle()
+	different := false
+	for i := range cards {
+		if cards[i] != originalDeck[i] {
+			different = true
+			break
+		}
+	}
+	if !different {
+		t.Errorf("Expected deck to be shuffled, but it was not")
+	}
+}

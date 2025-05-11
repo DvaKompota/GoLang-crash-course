@@ -23,8 +23,10 @@ func newDeck() deck {
 	return cards
 }
 
-func (d deck) deal(handSize int) (deck, deck) {
-	return d[:handSize], d[handSize:] 
+func (d *deck) deal(handSize int) deck {
+	hand := (*d)[:handSize]
+	*d = (*d)[handSize:]
+	return hand
 }
 
 func (d deck) print() {
